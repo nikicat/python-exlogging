@@ -79,9 +79,11 @@ def wrapgenerator(gen, logger, level, func):
     finally:
         tl.identation -= 1
 
-TRACE=5
+logging.TRACE = 5
+logging._levelNames[logging.TRACE] = 'TRACE'
+logging._levelNames['TRACE'] = logging.TRACE
 
-def wrapfunc(func, level=TRACE):
+def wrapfunc(func, level=logging.TRACE):
     def innerFunc(*args, **kwargs):
         if not hasattr(glob, 'enabled') or not glob.enabled:
             return func(*args, **kwargs)
@@ -119,7 +121,7 @@ def wrapfunc(func, level=TRACE):
         result = func
     return result
 
-def logged2(level=TRACE):
+def logged2(level=logging.TRACE):
     def wrap(func):
         return logged(func, level)
     return wrap
