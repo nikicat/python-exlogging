@@ -117,6 +117,7 @@ def wrapfunc(func, level=logging.TRACE):
         result.getlogger = func.getlogger
         result.__doc__ = func.__doc__
         result.__name__ = func.__name__
+        result.__dict__.update(func.__dict__)
     else:
         result = func
     return result
