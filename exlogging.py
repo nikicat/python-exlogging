@@ -45,7 +45,7 @@ def getlogger(obj):
 def setlogger(obj, logger):
     obj._logger = logger
 
-def logged(klass):
+def wrap(klass):
     if inspect.isfunction(klass):
         return wrapfunc(klass)
 
