@@ -158,6 +158,13 @@ class RegexpFilter(logging.Filter):
     def filter(self, record):
         return self.pattern.match(getattr(record, self.field)) is not None
 
+class HasAttrFilter(logging.Filter):
+    def __init__(self, attr):
+        self.attr = attr
+
+    def filter(self, record):
+        return hasattr(record, self.attr)
+
 class FileHandler(logging.FileHandler):
     def __init__(self, *args, terminator=logging.StreamHandler.terminator, errors=None, **kwargs):
         self.terminator = terminator
