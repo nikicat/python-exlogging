@@ -109,7 +109,7 @@ def wrapfunc(func, level=logging.TRACE):
                 raise
             finally:
                 tl.identation -= 1
-            logger.log(level, ident + '<- %s %s', func.__name__, repr(result))
+            logger.log(level, ident + '<- %s', func.__name__, extra={'params': result})
             return result
     func.getlogger = lambda: getlogger(func)
     if glob.enabled:
