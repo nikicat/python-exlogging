@@ -63,7 +63,7 @@ class Global(object):
     pass
 glob = Global()
 glob.enabled = True
-glob.appname = ''
+glob.appname = 'appname'
 tl = threading.local()
 
 def wrapgenerator(gen, logger, level, func):
